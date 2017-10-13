@@ -1,11 +1,34 @@
-from automata.Automata import Automata, Cell
+from automata.Scenario import Scenario
+from automata.Cell import Cell, GoLCell
 from automata.Point import Point
+import random
 
 def main():
-    auto = Automata([Cell(Point(x,y)) for x in range(10) for y in range(10)])
 
-    a = auto.tick()
+    width = 10
+    height = 10
 
-    print(a)
+    automata = Scenario(width, height)
+
+    for w in range(automata.width):
+        for h in range(automata.height):
+            automata.add_cell(
+                    GoLCell(
+                        point=Point(w,h),
+                        scenario=automata,
+                        radius=1
+                        )
+                    
+                    )
+
+    for i in range(10):
+        automata.renderer.show()
+        automata.tick()
+        print('\n\n')
+        input()
+
+
 if __name__ == '__main__':
     main()
+
+
