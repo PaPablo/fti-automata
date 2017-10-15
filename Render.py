@@ -7,7 +7,7 @@ class Render():
     def show(self):
         for w in range(self.scenario.width):
             for h in range(self.scenario.height):
-                cell = self.scenario.atPoints([Point(h,w)])
+                cell = self.scenario.at_points([Point(h,w)])
                 if cell:
                     for c in cell:
                         if c.alive:

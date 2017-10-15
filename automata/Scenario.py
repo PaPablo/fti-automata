@@ -13,7 +13,7 @@ class Scenario():
     def add_cell(self, cell):
         self.current_moment.append(cell)
 
-    def atPoints(self,points):
+    def at_points(self,points):
         return [c for c in self.current_moment for p in points if c.point == p]
 
     def tick(self):

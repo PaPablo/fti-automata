@@ -16,7 +16,7 @@ class GameOfLife():
         pass
 
     def action(self, cell, scenario):
-        neighborhood = scenario.atPoints(cell.point.vicinity(cell.radius))
+        neighborhood = scenario.at_points(cell.point.vicinity(cell.radius))
         nALives = len([n for n in neighborhood if n.alive])
 
         if  nALives > 3 or nALives < 2:
@@ -45,7 +45,7 @@ class Cell():
 
 class GoLCell(Cell):
     def __init__(self, point, scenario, radius, ruleset=GameOfLife()):
-        self.alive = random.random() < 0.3
+        self.alive = bool(random.randint(0,1))
 
         super(GoLCell,self).__init__(point, scenario,ruleset, radius)
 
