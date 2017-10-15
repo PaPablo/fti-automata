@@ -22,6 +22,7 @@ def main():
                     )
 
     for i in range(10):
+        print("TICK {}\n".format(i))
         automata.renderer.show()
         automata.tick()
         print('\n\n')
