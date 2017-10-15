@@ -8,13 +8,13 @@ class Scenario():
 
 
     def __iter__(self):
-        return current_moment.__iter__()
+        return iter(current_moment)
 
     def add_cell(self, cell):
         self.current_moment.append(cell)
 
     def atPoints(self,points):
-        return [c for c in self.current_moment for p in points if c.point.equal(p)]
+        return [c for c in self.current_moment for p in points if c.point == p]
 
     def tick(self):
         next_moment = []

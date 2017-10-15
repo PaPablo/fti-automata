@@ -16,7 +16,7 @@ class GameOfLife():
         pass
 
     def action(self, cell, scenario):
-        neighborhood = scenario.atPoints(cell.point.vecinity(cell.radius))
+        neighborhood = scenario.atPoints(cell.point.vicinity(cell.radius))
         nALives = len([n for n in neighborhood if n.alive])
 
         if  nALives > 3 or nALives < 2:
@@ -34,7 +34,7 @@ class Cell():
         self.ruleset = ruleset
 
     def neighbors(self):
-        return self.point.vecinity(self.radius)
+        return self.point.vicinity(self.radius)
 
     def action(self):
         self.ruleset.action(self, self.scenario)
