@@ -4,8 +4,7 @@ Has a point (place in the scenario),
 and a reference in said scenario
 
 """
-import random
-from .Ruleset import Ruleset, GameOfLife
+from automata.ruleset.Ruleset import Ruleset
 
 
 class Character():
@@ -26,13 +25,3 @@ class Character():
 
     def __str__(self):
         return 'character at {} {}'.format(self.point.x, self.point.y)
-
-class GoLCharacter(Character):
-    def __init__(self, point, scenario, radius, ruleset=GameOfLife()):
-        self.alive = bool(random.randint(0,1))
-
-        super(GoLCharacter,self).__init__(point, scenario,ruleset, radius)
-
-    def __str__(self):
-        return 'character at {} {}'.format(self.point.x, self.point.y)
-

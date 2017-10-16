@@ -1,5 +1,6 @@
 from automata.Scenario import Scenario
-from automata.Character import Character, GoLCharacter
+from automata.character.Character import Character
+from automata.character.GoLCharacter import GoLCharacter
 from automata.Point import Point
 import random
 

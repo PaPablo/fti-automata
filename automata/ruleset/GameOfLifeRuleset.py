@@ -1,6 +1,4 @@
-class Ruleset():
-    def action(self, character, neighbors):
-        raise NotImplementedError
+from .Ruleset import Ruleset
 
 class GameOfLife(Ruleset):
     obj = None
