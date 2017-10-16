@@ -1,4 +1,4 @@
-from Render import Render
+from ui.Render import Render
 class Scenario():
     def __init__(self,width, height):
         self.width = width
@@ -8,10 +8,10 @@ class Scenario():
 
 
     def __iter__(self):
-        return iter(current_moment)
+        return iter(self.current_moment)
 
-    def add_cell(self, cell):
-        self.current_moment.append(cell)
+    def add_character(self, character):
+        self.current_moment.append(character)
 
     def at_points(self,points):
         return [c for c in self.current_moment for p in points if c.point == p]

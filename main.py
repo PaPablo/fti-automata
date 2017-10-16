@@ -1,5 +1,5 @@
 from automata.Scenario import Scenario
-from automata.Cell import Cell, GoLCell
+from automata.Character import Character, GoLCharacter
 from automata.Point import Point
 import random
 
@@ -12,8 +12,8 @@ def main():
 
     for w in range(automata.width):
         for h in range(automata.height):
-            automata.add_cell(
-                    GoLCell(
+            automata.add_character(
+                    GoLCharacter(
                         point=Point(w,h),
                         scenario=automata,
                         radius=1
