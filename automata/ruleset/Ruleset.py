@@ -1,24 +1,32 @@
 class State():
-    def do(self, character):
+    
+    @classmethod
+    def do(cls, character):
         raise NotImplementedError
 
 
 class Attacking(State):
-    def do(self, character):
+
+    @classmethod
+    def do(cls, character):
         character.attack()
 
 class Wandering(State):
-    def do(self, character):
+
+    @classmethod
+    def do(cls, character):
         character.wander()
 
 class Running(State):
-    def do(self, character):
+
+    @classmethod
+    def do(cls, character):
         character.run()
 
 
 class Ruleset():
     def __init__(self, character):
-
+        pass
         #current_state = character.state
         #if(current_state(character)):
         #    character.state = current_state.next_state
@@ -54,7 +62,7 @@ class Ruleset():
 
 
     @property
-    def inital(self):
+    def initial(self):
         return State
 
     def scan(self):
