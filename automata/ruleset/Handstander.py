@@ -1,20 +1,42 @@
 from .Ruleset import Ruleset
+from .State import *
 
 class Handstander(Ruleset):
 
     def __init__(self, character):
 
-        handlers: {
+        super().__init__(character)
+
+
+        self.handlers = {
             Attacking: [
                 {
-                    "event": None,
+                    "event": self.attacking_to_wandering,
                     "next_state": Wandering
                 }
             ],
             Wandering: [
                 {
-                    "event": None,
+                    "event": self.wandering_to_attacking,
                     "next_state": Attacking
                 }
             ]
         }
+
+    def attacking_to_wandering(self):
+        """No hay enemigos en nuestro punto"""
+        return len(self._character.enemies_onpoint()) == 0
+
+    def wandering_to_attacking(self):
+        """Hay por lo menos un enemigo en nuestro punto"""
+        return len(self._character.enemies_onpoint()) > 0
+
+    @property
+    def initial(self):
+        return Attacking
+
+    def attack(self):
+        print("he attac")
+
+    def wander(self):
+        print("he wanderrr")

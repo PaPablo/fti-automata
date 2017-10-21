@@ -15,14 +15,14 @@ class Character():
         self.state = self.ruleset.initial
         self.team = team
 
-    def __str__(self):
-        return 'character at {} {}'.format(self.point.x, self.point.y)
+        self.alive = True
+
+    # def __str__(self):
+    #     return 'character at ({}, {})'.format(self.point.x, self.point.y)
 
     def __repr__(self):
-        return 'character at {} {}'.format(self.point.x, self.point.y)
-
-    def is_in_state(self, state):
-        return self.state == state
+        return "character at ({}, {}).\nTEAM: {}.\nSTATE: {}.".format(
+            self.point.x, self.point.y, self.team, self.state.__name__)
 
     @property
     def neighbors(self):
@@ -30,25 +30,47 @@ class Character():
         return scenario.at_points(
             self.point.vicinity(self.radius))
 
+    @property
+    def vicinity(self):
+        return self.point.vicinity(self.radius)
 
-    def characters_onpoint(self):
-        return [c for c in scenario.at_points([self.point]) if c != self]
+    @property
+    def transitions(self):
+        return self.ruleset.handlers[self.state]
 
-    def enemies_onpoint(self):
-        return filter(self.is_allied, self.characters_onpoint())
+    def characters_onpoint(self, points=None):
+        """devuelve los personajes en su mismo punto"""
+        if(points == None):
+            points = self.point
+        if(type(points) != list):
+            points = [points]
+        return [c for c in scenario.at_points(points) if c != self]
+
+    def enemies_onpoint(self, points=None):
+        """devuelve los enemigos en su mismo punto"""
+        return [c for c in self.characters_onpoint(points) if not c.is_allied(self)]
+
+    def allies_onpoint(self, points=None):
+        """devuelve los aliados en su mismo punto"""
+        return [c for c in self.characters_onpoint(points) if c.is_allied(self)]
 
     def is_allied(self, character):
         return self.team == character.team
 
+    def is_in_state(self, state):
+        return self.state == state
+
     def action(self):
+        # print("yo im doing")
         self.state.do(self)
+        self.ruleset.transition()
         return self
 
     def attack(self):
-        self.ruleset.attack(self)
+        self.ruleset.attack()
 
     def wander(self):
-        self.ruleset.wander(self)
+        self.ruleset.wander()
 
     def run(self):
-        self.ruleset.run(self)
+        self.ruleset.run()

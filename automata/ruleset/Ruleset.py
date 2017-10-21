@@ -1,73 +1,26 @@
-class State():
-    
-    @classmethod
-    def do(cls, character):
-        raise NotImplementedError
-
-
-class Attacking(State):
-
-    @classmethod
-    def do(cls, character):
-        character.attack()
-
-class Wandering(State):
-
-    @classmethod
-    def do(cls, character):
-        character.wander()
-
-class Running(State):
-
-    @classmethod
-    def do(cls, character):
-        character.run()
-
+from .State import *
 
 class Ruleset():
     def __init__(self, character):
-        pass
-        #current_state = character.state
-        #if(current_state(character)):
-        #    character.state = current_state.next_state
-
-
-        #handlers:{
-        #    Attacking: [
-        #    #lista de transiciones
-        #        {
-        #            #el evento tiene que ser una funcion que recibe un personaje
-        #            "event": None ,
-        #            "next_state": None
-        #        },
-        #    ],
-        #    Wandering:[
-        #    #lista de transiciones
-        #        {
-        #            #el evento tiene que ser una funcion que recibe un personaje
-        #            "event": None,
-        #            "next_state": None
-        #        },
-        #    ],
-        #    Running:[
-        #    #lista de transiciones
-        #        {
-        #            #el evento tiene que ser una funcion que recibe un personaje
-        #            "event": None,
-        #            "next_state": None
-        #        },
-        #    ]
-        #}
-
-
+        self._character = character
 
     @property
     def initial(self):
         return State
 
-    def scan(self):
-        pass
+    def transition(self):
+        for transition in self._character.transitions:
+            if transition["event"]():
+                print("TRANSITIONING TO {} ...".format(transition["next_state"].__name__))
+                self._character.state = transition["next_state"]
+            else:
+                print("NOPE")
 
+    def attack(self):
+        raise NotImplementedError
 
-    def action(self, character, neighbors):
+    def wander(self):
+        raise NotImplementedError
+
+    def run(self):
         raise NotImplementedError

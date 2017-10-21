@@ -2,7 +2,7 @@ from .Ruleset import Ruleset
 
 class GameOfLife(Ruleset):
     obj = None
-    def __init__(self):
+    def __init__(self, character):
         pass
 
     def action(self, character, neighbors):
