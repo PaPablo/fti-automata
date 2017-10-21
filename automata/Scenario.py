@@ -1,4 +1,5 @@
 from ui.Render import Render
+from .config import SCENARIO_WIDTH, SCENARIO_HEIGHT
 class Scenario():
     def __init__(self,width, height):
         self.width = width
@@ -25,3 +26,6 @@ class Scenario():
 
     def __str__(self):
         return 'Scenario'
+
+scenario = Scenario(height = SCENARIO_HEIGHT,
+                    width = SCENARIO_WIDTH)

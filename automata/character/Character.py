@@ -5,24 +5,40 @@ and a reference in said scenario
 
 """
 from automata.ruleset.Ruleset import Ruleset
-
+from automata.Scenario import scenario
 
 class Character():
-    #como la clase Character no la vamos a extender, el radio tendria que estar en el ruleset
-    def __init__(self, point, scenario, ruleset, radius=1):
+    def __init__(self, point, ruleset, radius=1):
         self.radius = radius
         self.point = point
-        self.scenario = scenario
         self.ruleset = ruleset
-
-    @property
-    def neighbors(self):
-        return self.scenario.at_points(
-            self.point.vicinity(self.radius))
-
-    def action(self):
-        self.ruleset.action(self, self.neighbors)
-        return self
+        self.state = ruleset.initial
 
     def __str__(self):
         return 'character at {} {}'.format(self.point.x, self.point.y)
+
+    def is(self, state):
+        return self.state == state
+
+    @property
+    def neighbors(self):
+        """devuelve los personajes en su vecindad"""
+        return scenario.at_points(
+            self.point.vicinity(self.radius))
+
+
+    def characters_onpoint
+
+    def action(self):
+        self.state.do(self)
+        return self
+
+
+    def attack(self):
+        self.ruleset.attack(self)
+
+    def wander(self):
+        self.ruleset.wander(self)
+
+    def run(self):
+        self.ruleset.run(self)
