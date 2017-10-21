@@ -8,7 +8,8 @@ from automata.ruleset.Ruleset import Ruleset
 
 
 class Character():
-    def __init__(self, point, scenario, ruleset,radius=1):
+    #como la clase Character no la vamos a extender, el radio tendria que estar en el ruleset
+    def __init__(self, point, scenario, ruleset, radius=1):
         self.radius = radius
         self.point = point
         self.scenario = scenario
