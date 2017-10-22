@@ -109,12 +109,57 @@ def test_attack():
         c.action()
         print(c)
 
+def test_vicinity():
+    c1 = Character(point=Point(0,0), ruleset=Handstander, team=1, radius=1)
+    c2 = Character(point=Point(0,5), ruleset=TupperWasher, team=2, radius=1)
+    c3 = Character(point=Point(0,10), ruleset=TupperWasher, team=2, radius=1)
+    c4 = Character(point=Point(5,0), ruleset=TupperWasher, team=2, radius=1)
+    c5 = Character(point=Point(5,10), ruleset=TupperWasher, team=2, radius=1)
+    c6 = Character(point=Point(10,0), ruleset=TupperWasher, team=2, radius=1)
+    c7 = Character(point=Point(10,5), ruleset=TupperWasher, team=2, radius=1)
+    c8 = Character(point=Point(10,10), ruleset=TupperWasher, team=2, radius=1)
+    c9 = Character(point=Point(5,5), ruleset=TupperWasher, team=2, radius=1)
 
+    chars = [c1,c2,c3,c4,c5,c6,c7,c8,c9]
 
+    for c in chars:
+        for p in enumerate(c.vicinity):
+            print(p)
+
+        print("\n\n")
+
+def test_wander():
+    c1 = Character(point=Point(1,1), ruleset=Handstander, team=1)
+    #c2 = Character(point=Point(1,1), ruleset=Handstander, team=2)
+    #c3 = Character(point=Point(1,1), ruleset=Handstander, team=2)
+    print(c1)
+    for c in [c1]:
+        automata.add_character(c)
+
+    print(c1.state.__name__)
+    print("c1 is in state {}? {}".format(Attacking.__name__, c1.is_in_state(Attacking)))
+    c1.action()
+    print(c1.state.__name__)
+    print("c1 is in state {}? {}".format(Wandering.__name__, c1.is_in_state(Wandering)))
+    print(c1)
+    c1.action()
+    print(c1.state.__name__)
+    print("c1 is in state {}? {}".format(Wandering.__name__, c1.is_in_state(Wandering)))
+    print(c1)
+    c1.action()
+    print(c1.state.__name__)
+    print("c1 is in state {}? {}".format(Wandering.__name__, c1.is_in_state(Wandering)))
+    print(c1)
+    c1.action()
+    print(c1.state.__name__)
+    print("c1 is in state {}? {}".format(Wandering.__name__, c1.is_in_state(Wandering)))
+    print(c1)
 
 
 if __name__ == '__main__':
     # test()
     # test_stonethrower()
     # test_tupperwasher()
-    test_attack()
+    # test_attack()
+    # test_vicinity()
+    test_wander()

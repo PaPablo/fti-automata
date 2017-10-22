@@ -1,6 +1,8 @@
+import random
 from .Ruleset import Ruleset
 from .State import *
 from automata.config import HANDSTANDER_DMG_POINTS, HANDSTANDER_HP_INITIAL
+
 
 
 class Handstander(Ruleset):
@@ -48,11 +50,13 @@ class Handstander(Ruleset):
 
     def attack(self):
         print("he attac")
-        enemy = self._character.enemies_onpoint()[0]
 
-        enemy.hit(self._character)
+        enemy = self._character.enemies_onpoint()
+        if enemy == []:
+            return
 
-
+        random.choice(enemy).hit(self._character)
 
     def wander(self):
         print("he wanderrr")
+        self._character.point = random.choice(self._character.vicinity)

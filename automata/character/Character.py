@@ -70,7 +70,8 @@ class Character():
         return self.state == state
 
     def action(self):
-        # print("yo im doing")
+        if not self.alive:
+            return
         self.state.do(self)
         self.ruleset.transition()
         return self
