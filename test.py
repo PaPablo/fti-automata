@@ -94,7 +94,7 @@ def test_tupperwasher():
 
 def test_attack():
     c1 = Character(point=Point(1,1), ruleset=Handstander, team=1)
-    c2 = Character(point=Point(1,1), ruleset=TupperWasher, team=2)
+    c2 = Character(point=Point(1,1), ruleset=Handstander, team=2)
 
     chars = [c1,c2]
 
@@ -160,6 +160,6 @@ if __name__ == '__main__':
     # test()
     # test_stonethrower()
     # test_tupperwasher()
-    # test_attack()
+    test_attack()
     # test_vicinity()
-    test_wander()
+    # test_wander()
