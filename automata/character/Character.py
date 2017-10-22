@@ -13,16 +13,13 @@ class Character():
         self.point = point
         self.ruleset = ruleset(self)
         self.state = self.ruleset.initial
+        self.dmg_points = self.ruleset.dmg_points
         self.team = team
-
-        self.alive = True
-
-    # def __str__(self):
-    #     return 'character at ({}, {})'.format(self.point.x, self.point.y)
+        self.hp = self.ruleset.hp_initial
 
     def __repr__(self):
-        return "character at ({}, {}).\nTEAM: {}.\nSTATE: {}.".format(
-            self.point.x, self.point.y, self.team, self.state.__name__)
+        return "character at ({}, {}).\nTEAM: {}.\nSTATE: {}.\nHP: {}".format(
+            self.point.x, self.point.y, self.team, self.state.__name__, self.hp)
 
     @property
     def neighbors(self):
@@ -37,6 +34,18 @@ class Character():
     @property
     def transitions(self):
         return self.ruleset.handlers[self.state]
+
+    @property
+    def dmg_points(self):
+        return self._dmg_points
+
+    @dmg_points.setter
+    def dmg_points(self, value):
+        self._dmg_points = value
+
+    @property
+    def alive(self):
+        return True if self.hp > 0 else False
 
     def characters_onpoint(self, points=None):
         """devuelve los personajes en su mismo punto"""
@@ -74,3 +83,6 @@ class Character():
 
     def run(self):
         self.ruleset.run()
+
+    def hit(self, character):
+        self.hp -= character.dmg_points

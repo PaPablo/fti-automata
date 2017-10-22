@@ -1,5 +1,7 @@
 from .Ruleset import Ruleset
 from .State import *
+from automata.config import HANDSTANDER_DMG_POINTS, HANDSTANDER_HP_INITIAL
+
 
 class Handstander(Ruleset):
 
@@ -23,6 +25,7 @@ class Handstander(Ruleset):
             ]
         }
 
+
     def attacking_to_wandering(self):
         """No hay enemigos en nuestro punto"""
         return len(self._character.enemies_onpoint()) == 0
@@ -35,8 +38,21 @@ class Handstander(Ruleset):
     def initial(self):
         return Attacking
 
+    @property
+    def dmg_points(self):
+        return HANDSTANDER_DMG_POINTS
+
+    @property
+    def hp_initial(self):
+        return HANDSTANDER_HP_INITIAL
+
     def attack(self):
         print("he attac")
+        enemy = self._character.enemies_onpoint()[0]
+
+        enemy.hit(self._character)
+
+
 
     def wander(self):
         print("he wanderrr")

@@ -6,7 +6,15 @@ class Ruleset():
 
     @property
     def initial(self):
-        return State
+        raise NotImplementedError
+
+    @property
+    def dmg_points(self):
+        raise NotImplementedError
+
+    @property
+    def hp_initial(self):
+        raise NotImplementedError
 
     def transition(self):
         for transition in self._character.transitions:
@@ -15,6 +23,7 @@ class Ruleset():
                 self._character.state = transition["next_state"]
             else:
                 print("NOPE")
+
 
     def attack(self):
         raise NotImplementedError
