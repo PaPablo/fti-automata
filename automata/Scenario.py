@@ -15,12 +15,14 @@ class Scenario():
         self.current_moment.append(character)
 
     def at_points(self,points):
-        return [c for c in self.current_moment for p in points if c.point == p]
+        return [c for c in self.current_moment for p in points if c and c.point == p]
 
     def tick(self):
         next_moment = []
-        for c in self.current_moment:
-            next_moment.append(c.action())
+        if self.current_moment:
+            for c in self.current_moment:
+                if c:
+                    next_moment.append(c.action())
 
         self.current_moment = next_moment
 

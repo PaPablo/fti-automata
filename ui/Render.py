@@ -15,7 +15,10 @@ class Render():
     def show(self):
         for w in range(self.scenario.width):
             for h in range(self.scenario.height):
-                character = self.scenario.at_points([Point(h,w)])
+                try:
+                    character = self.scenario.at_points([Point(h,w)])
+                except AttributeError:
+                    character = None
                 if character:
                     for c in character:
                         if c.alive:
