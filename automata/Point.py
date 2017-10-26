@@ -1,5 +1,6 @@
 from .config import SCENARIO_HEIGHT, SCENARIO_WIDTH
 
+
 class Point():
     def __init__(self, x,y):
         self.x = x
@@ -28,6 +29,7 @@ class Point():
             if (_x != 0 or _y != 0)]
             if (p.x >= 0 and p.x <= SCENARIO_WIDTH) and
             (p.y >= 0 and p.y <= SCENARIO_HEIGHT)]
+
 
 
     def __repr__(self):
