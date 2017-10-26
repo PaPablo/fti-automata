@@ -55,12 +55,3 @@ class TupperWasher(Ruleset):
     def attacking_to_running(self):
         return len(self._character.allies_onpoint()) < 3
 
-
-    def attack(self):
-        print("he attac")
-
-    def wander(self):
-        print("he wanderrr")
-
-    def run(self):
-        print("he ran")

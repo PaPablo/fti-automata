@@ -47,16 +47,3 @@ class Handstander(Ruleset):
     @property
     def hp_initial(self):
         return HANDSTANDER_HP_INITIAL
-
-    def attack(self):
-        print("he attac")
-
-        enemy = self._character.enemies_onpoint()
-        if enemy == []:
-            return
-
-        random.choice(enemy).hit(self._character)
-
-    def wander(self):
-        print("he wanderrr")
-        self._character.point = random.choice(self._character.vicinity)

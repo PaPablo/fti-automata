@@ -1,4 +1,6 @@
+import random
 from .Ruleset import Ruleset
+from automata.config import STONETHROWER_DMG_POINTS,STONETHROWER_HP_INITIAL
 from .State import *
 
 class StoneThrower(Ruleset):
@@ -31,6 +33,14 @@ class StoneThrower(Ruleset):
     def initial(self):
         return Wandering
 
+    @property
+    def dmg_points(self):
+        return STONETHROWER_DMG_POINTS
+
+    @property
+    def hp_initial(self):
+        return STONETHROWER_HP_INITIAL
+
     def wandering_to_attacking(self):
         return len(self._character.enemies_onpoint(self._character.vicinity)) > 0
 
@@ -40,12 +50,17 @@ class StoneThrower(Ruleset):
     def running_to_wandering(self):
         return len(self._character.enemies_onpoint(self._character.vicinity.append(self._character.point))) == 0
 
-
     def attack(self):
         print("he attac")
 
-    def wander(self):
-        print("he wanderrr")
+        enemy = self._character.enemies_onpoint(self._character.vicinity)
 
-    def run(self):
-        print("he ran")
+        if enemy == []:
+            return
+
+        random.choice(enemy).hit(self._character)
+
+
+
+
+        
