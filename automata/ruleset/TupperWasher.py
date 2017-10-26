@@ -6,6 +6,7 @@ class TupperWasher(Ruleset):
 
         super().__init__(character)
 
+        """Transiciones de estados"""
         self.handlers = {
             Attacking: [
                 {
