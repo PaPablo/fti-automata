@@ -12,6 +12,7 @@ class Scenario():
         return iter(self.current_moment)
 
     def add_character(self, character):
+        """Agrega un personaje al escenario"""
         self.current_moment.append(character)
 
     def at_points(self,points):
@@ -23,6 +24,7 @@ class Scenario():
         return [c for c in self.current_moment for p in points if c and c.point == p]
 
     def tick(self):
+        """Ejecuta el .action() de todos sus personajes"""
         next_moment = []
         if self.current_moment:
             for c in self.current_moment:
