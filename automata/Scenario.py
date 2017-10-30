@@ -6,7 +6,6 @@ class Scenario():
         self.width = width
         self.height = height
         self.current_moment = []
-        self.renderer = Render(self)
 
 
     def __iter__(self):

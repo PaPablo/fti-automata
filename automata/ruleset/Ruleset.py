@@ -21,14 +21,14 @@ class Ruleset():
     def transition(self):
         for transition in self._character.transitions:
             if transition["event"]():
-                print("TRANSITIONING TO {} ...".format(transition["next_state"].__name__))
+                # print("TRANSITIONING TO {} ...".format(transition["next_state"].__name__))
                 self._character.state = transition["next_state"]
             else:
-                print("NOPE")
+                pass
+                # print("NOPE")
 
     def attack(self):
-        print("he attac")
-
+        # print("he attac")
         enemy = self._character.enemies_onpoint()
         if enemy == []:
             return
@@ -36,7 +36,7 @@ class Ruleset():
         random.choice(enemy).hit(self._character)
 
     def wander(self):
-        print("he wanderrr")
+        # print("he wanderrr")
         self._character.point = random.choice(self._character.vicinity)
 
     def run(self):

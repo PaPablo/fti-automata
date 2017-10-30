@@ -9,9 +9,10 @@ from automata.ruleset.StoneThrower import StoneThrower
 from automata.Scenario import scenario as automata
 from time import sleep
 import random
+from ui.window.Window import run_simulation
 
 
-def main():
+def setup_automata():
 
     width = 10
     height = 10
@@ -35,17 +36,19 @@ def main():
 
     for c in chars:
         automata.add_character(c)
+    
+    # for i in range(1000):
+    #     print("TICK {}\n".format(i))
+    #     automata.renderer.show()
 
-    for i in range(1000):
-        print("TICK {}\n".format(i))
-        automata.renderer.show()
-
-        for c in chars:
-            print('Team: {} | Ruleset: {} | Health: {}'.format(c.team, c.hp))
-        automata.tick()
-        print('\n\n')
-        sleep(0.1)
+    #     for c in chars:
+    #         print('Team: {} | Ruleset: {} | Health: {}'.format(c.team, c.hp))
+    #     automata.tick()
+    #     print('\n\n')
+    #     sleep(0.1)
 
 
 if __name__ == '__main__':
-    main()
+    setup_automata()
+    run_simulation()
+

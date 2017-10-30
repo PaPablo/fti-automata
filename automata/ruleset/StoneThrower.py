@@ -51,7 +51,7 @@ class StoneThrower(Ruleset):
         return len(self._character.enemies_onpoint(self._character.vicinity.append(self._character.point))) == 0
 
     def attack(self):
-        print("he attac")
+        # print("he attac")
 
         enemy = self._character.enemies_onpoint(self._character.vicinity)
 
