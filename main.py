@@ -9,11 +9,7 @@ from automata.ruleset.StoneThrower import StoneThrower
 from automata.Scenario import scenario as automata
 from time import sleep
 import random
-<<<<<<< HEAD
 from ui.window.Window import run_simulation
-=======
-import os
->>>>>>> 13f52b81f503549a45970d7e3bdf881950f05fa7
 
 
 def setup_automata():
