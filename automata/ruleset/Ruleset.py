@@ -43,12 +43,7 @@ class Ruleset():
         random.choice(enemy).hit(self._character)
 
     def wander(self):
-<<<<<<< HEAD
         # print("he wanderrr")
-=======
-        """Se mueve aleatoriamente"""
-        print("he wanderrr")
->>>>>>> 13f52b81f503549a45970d7e3bdf881950f05fa7
         self._character.point = random.choice(self._character.vicinity)
 
     def run(self):
