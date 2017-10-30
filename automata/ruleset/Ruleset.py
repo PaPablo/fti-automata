@@ -35,13 +35,7 @@ class Ruleset():
                 # print("NOPE")
 
     def attack(self):
-<<<<<<< HEAD
         # print("he attac")
-=======
-        """Ataca a un enemigo aleatorio en su mismo punto"""
-        print("he attac")
-
->>>>>>> 13f52b81f503549a45970d7e3bdf881950f05fa7
         enemy = self._character.enemies_onpoint()
         if enemy == []:
             return

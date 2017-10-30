@@ -59,12 +59,7 @@ class StoneThrower(Ruleset):
         return len(self._character.enemies_onpoint(self._character.vicinity.append(self._character.point))) == 0
 
     def attack(self):
-<<<<<<< HEAD
         # print("he attac")
-=======
-        """Ataca a un enemigo aleatorio en su vecindad"""
-        print("he attac")
->>>>>>> 13f52b81f503549a45970d7e3bdf881950f05fa7
 
         enemy = self._character.enemies_onpoint(self._character.vicinity)
 

@@ -50,28 +50,11 @@ def setup_automata():
     #     print("TICK {}\n".format(i))
     #     automata.renderer.show()
 
-<<<<<<< HEAD
     #     for c in chars:
     #         print('Team: {} | Ruleset: {} | Health: {}'.format(c.team, c.hp))
     #     automata.tick()
     #     print('\n\n')
     #     sleep(0.1)
-=======
-    for i in range(1000):
-        print("TICK {}\n".format(i))
-        automata.renderer.show()
-        print("REMAINING CHARACTERS: {}".format(len(automata.current_moment)))
-
-        for c in chars:
-            print("{}".format(c))
-            #print('Team: {} | Ruleset: {} | Health: {} | State: {}'.format(c.team, c.ruleset, c.hp, c.state.__name__))
-
-        automata.tick()
-        #para limpiar la pantalla
-        #os.system("clear")
-        print("\n\n")
-        sleep(0.1)
->>>>>>> 13f52b81f503549a45970d7e3bdf881950f05fa7
 
 
 if __name__ == '__main__':
