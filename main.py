@@ -7,6 +7,8 @@ from automata.ruleset.Handstander import Handstander
 from automata.ruleset.TupperWasher import TupperWasher
 from automata.ruleset.StoneThrower import StoneThrower
 from automata.Scenario import scenario as automata
+
+from automata.config import TEAM_1, TEAM_2
 from time import sleep
 import random
 from ui.window.Window import run_simulation
@@ -17,12 +19,12 @@ def setup_automata():
     width = 10
     height = 10
 
-    c1 = Character(point=Point(0,1), ruleset=Handstander, team=2)
-    c2 = Character(point=Point(1,0), ruleset=TupperWasher, team=2)
-    c3 = Character(point=Point(1,1), ruleset=StoneThrower, team=2)
-    c4 = Character(point=Point(5,5), ruleset=Handstander, team=1)
-    c5 = Character(point=Point(7,6), ruleset=TupperWasher, team=1)
-    c6 = Character(point=Point(9,8), ruleset=StoneThrower, team=1)
+    c1 = Character(point=Point(0,1), ruleset=Handstander, team=TEAM_2)
+    c2 = Character(point=Point(1,0), ruleset=TupperWasher, team=TEAM_2)
+    c3 = Character(point=Point(1,1), ruleset=StoneThrower, team=TEAM_2)
+    c4 = Character(point=Point(1,1), ruleset=Handstander, team=TEAM_1)
+    c5 = Character(point=Point(7,6), ruleset=TupperWasher, team=TEAM_1)
+    c6 = Character(point=Point(9,8), ruleset=StoneThrower, team=TEAM_1)
     # c4 = Character(point=Point(1,0), ruleset=Handstander, team=1)
     # c5 = Character(point=Point(1,1), ruleset=Handstander, team=2)
     # c6 = Character(point=Point(1,1), ruleset=Handstander, team=2)

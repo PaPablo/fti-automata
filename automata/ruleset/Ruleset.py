@@ -42,6 +42,8 @@ class Ruleset():
 
         random.choice(enemy).hit(self._character)
 
+
+
     def wander(self):
         # print("he wanderrr")
         self._character.point = random.choice(self._character.vicinity)

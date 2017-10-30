@@ -6,6 +6,7 @@ and a reference in said scenario
 """
 from automata.ruleset.Ruleset import Ruleset
 from automata.Scenario import scenario
+from ui.window.Window import draw_line
 
 class Character():
     def __init__(self, point, ruleset, team, radius=1):
@@ -106,3 +107,6 @@ class Character():
         self.hp -= character.dmg_points
         if self.hp < 0:
             self.hp = 0
+        
+        draw_line(character,self)
+
