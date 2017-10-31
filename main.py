@@ -44,17 +44,6 @@ def setup_automata():
     for c in chars:
         automata.add_character(c)
 
-    #for i in range(1000):
-    #    print("TICK {}\n".format(i))
-    #    automata.renderer.show()
-
-    #    for c in chars:
-    #        print('Team: {} | Ruleset: {} | Health: {}'.format(c.team, c.hp))
-    #    automata.tick()
-    #    print('\n\n')
-    #    sleep(0.1)
-
-
 if __name__ == '__main__':
     setup_automata()
     run_simulation()

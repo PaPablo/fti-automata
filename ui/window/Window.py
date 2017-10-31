@@ -2,7 +2,7 @@ import pygame
 from random import randint
 import math
 
-from automata.config import SCENARIO_WIDTH, SCENARIO_HEIGHT,windows_height,windows_width,x_lines,y_lines
+from automata.config import SCENARIO_WIDTH, SCENARIO_HEIGHT, WINDOWS_HEIGHT, WINDOWS_WIDTH, X_LINES, Y_LINES, IMAGES_DIR, GAME_SPEED
 from ui.window.sprites import sprite_set
 
 from ui.window.colors import colors
@@ -12,15 +12,15 @@ from automata.Point import Point
 from automata.ruleset.State import Attacking
 
 def draw_line(attacker, attackee):
-    attacker_x = attacker.point.x * windows_width/x_lines + (windows_width/SCENARIO_WIDTH)/2
-    attacker_y = attacker.point.y * windows_width/y_lines + (windows_height/SCENARIO_HEIGHT)/2
+    attacker_x = attacker.point.x * WINDOWS_WIDTH/X_LINES + (WINDOWS_WIDTH/SCENARIO_WIDTH)/2
+    attacker_y = attacker.point.y * WINDOWS_WIDTH/Y_LINES + (WINDOWS_HEIGHT/SCENARIO_HEIGHT)/2
 
-    attackee_x = attackee.point.x * windows_width/x_lines + (windows_width/SCENARIO_WIDTH)/2
-    attackee_y = attackee.point.y * windows_width/y_lines + (windows_height/SCENARIO_HEIGHT)/2
+    attackee_x = attackee.point.x * WINDOWS_WIDTH/X_LINES + (WINDOWS_WIDTH/SCENARIO_WIDTH)/2
+    attackee_y = attackee.point.y * WINDOWS_WIDTH/Y_LINES + (WINDOWS_HEIGHT/SCENARIO_HEIGHT)/2
 
     pygame.draw.line(screen,colors['red'],(attacker_x,attacker_y),(attackee_x,attackee_y))
 
-screen = pygame.display.set_mode((windows_width,windows_height))
+screen = pygame.display.set_mode((WINDOWS_WIDTH,WINDOWS_HEIGHT))
 def run_simulation():
 
     pygame.init()
@@ -39,17 +39,17 @@ def run_simulation():
 
 
     def lines():
-        for y in range(1,y_lines):
-            pygame.draw.line(screen, white, (0,windows_height/y_lines*y), (windows_width,windows_height/y_lines*y))
+        for y in range(1,Y_LINES):
+            pygame.draw.line(screen, white, (0,WINDOWS_HEIGHT/Y_LINES*y), (WINDOWS_WIDTH,WINDOWS_HEIGHT/Y_LINES*y))
 
-        for x in range(1,x_lines):
-            pygame.draw.line(screen, white, (windows_width/x_lines*x,0), (windows_width/x_lines*x,windows_height))
+        for x in range(1,X_LINES):
+            pygame.draw.line(screen, white, (WINDOWS_WIDTH/X_LINES*x,0), (WINDOWS_WIDTH/X_LINES*x,WINDOWS_HEIGHT))
 
     def fit(characters, x,y):
 
         points = []
-        center_x = x * windows_width/x_lines + (windows_width/SCENARIO_WIDTH)/2
-        center_y = y * windows_height/y_lines + (windows_height/SCENARIO_HEIGHT)/2
+        center_x = x * WINDOWS_WIDTH/X_LINES + (WINDOWS_WIDTH/SCENARIO_WIDTH)/2
+        center_y = y * WINDOWS_HEIGHT/Y_LINES + (WINDOWS_HEIGHT/SCENARIO_HEIGHT)/2
 
 
 
@@ -78,7 +78,7 @@ def run_simulation():
         x_size = 30
         y_size = 30
         print(sprite_set[point['team']][point['state']])
-        image = pygame.image.load('/home/pablo/gitHub/fti-automata/'+sprite_set[point['team']][point['state']]) 
+        image = pygame.image.load(IMAGES_DIR+sprite_set[point['team']][point['state']]) 
         image = pygame.transform.scale(image, (x_size,y_size))
 
         offset_x = (x_size/2)
@@ -110,9 +110,6 @@ def run_simulation():
 
         automata.tick()
 
-        clock.tick(5)
+        clock.tick(GAME_SPEED)
 
         pygame.display.flip()
-
-
-        

@@ -31,5 +31,3 @@ class Render():
 
         for y in self.representation:
             print(' '.join(str(x) for x in y))
-
-
