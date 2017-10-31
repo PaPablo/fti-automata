@@ -35,6 +35,7 @@ class Ruleset():
                 # print("NOPE")
 
     def attack(self):
+        """Ataca a un enemigo"""
         # print("he attac")
         enemy = self._character.enemies_onpoint()
         if enemy == []:
@@ -45,7 +46,7 @@ class Ruleset():
 
 
     def wander(self):
-        # print("he wanderrr")
+        """Se mueve aleatoriamente"""
         self._character.point = random.choice(self._character.vicinity)
 
     def run(self):
